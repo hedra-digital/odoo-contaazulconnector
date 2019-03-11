@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record model="ir.module.category" id="contaazul_group_categories">
+            <field name="name">Conta Azul Authorisation</field>
+            <field name="sequence">100</field>
+        </record>
+
+        <record id="conta_group_show_authorization" model="res.groups">
+            <field name="name">ContaAzul Authorisation</field>
+            <field name="category_id" ref="contaazul_group_categories"/>
+        </record>
+
+    </data>
+</odoo>

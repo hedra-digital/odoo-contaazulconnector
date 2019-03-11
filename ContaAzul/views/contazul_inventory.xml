@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="conta_product_template_inherit" model="ir.ui.view">
+        <field name="name">Product Template Inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='categ_id']" position="after">
+                <field name="contaazul_id" string="Conta Azul Id" readonly="True"/>
+                <field name="synch_with_contaazul" string="Sync with ContaAzul" readonly="True"/>
+                <button name="synch_with_conta_azul_action" string="Synchronize" type="object" class="oe_highlights" attrs="{'invisible':['|',('synch_with_contaazul','=',True),('id','=',False)]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

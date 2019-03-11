@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="conta_customer_form_inherit" model="ir.ui.view">
+            <field name="name">Customer Form Inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="contaazul_id" readonly="True"/>
+                    <field name="synch_with_contaazul" readonly="True"/>
+                    <button name="synch_with_conta_azul_action" string="Synchronize" type="object" class="oe_highlights" attrs="{'invisible':['|',('synch_with_contaazul','=',True),('id','=',False)]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

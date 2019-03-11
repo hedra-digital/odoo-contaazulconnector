@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id='res_config_inherit_form' model="ir.ui.view">
+            <field name="name">res.comfig.inherit.form</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="40"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-key="ContaAzul" string="ContaAzul" groups="ContaAzul.conta_group_show_authorization">
+                        <h2>Contaazul Api Call</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <label for="ks_api_link" string="Api Hit Link"/>
+                                    <field name="ks_api_link"/>
+                                    <div class="text-muted">
+                                        Contaazul api to hit
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

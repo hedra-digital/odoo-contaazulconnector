@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="contaazul_access_token" model="ir.ui.view">
+        <field name="name">res.company.inherit.form</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Authorise ContaAzul" attrs="{'invisible':[('contazul_authorised_state','in',['authorise'])]}" groups="ContaAzul.conta_group_show_authorization">
+                    <group>
+                        <field name="contaazul_client_id"/>
+                        <field name="contaazul_client_secret_key" password="True"/>
+                        <field name="contaazul_client_callback_url"/>
+                        <field name="contazul_authorised_state"/>
+                    </group>
+                    <button name="conaazul_authorise_action" string="Authorised" type="object" class="btn-primary"/>
+                </page>
+                <page string="ContaAzul Tokens" attrs="{'invisible':[('contazul_authorised_state','in',['unauthorised'])]}" groups="ContaAzul.conta_group_show_authorization">
+                    <group>
+                        <group>
+                            <field name="client_id_show"/>
+                            <field name="contazul_access_token" readonly="True"/>
+                            <field name="contazul_refresh_token" readonly="True"/>
+                            <field name="contazul_authorised_state" readonly="True"/>
+                            <field name="contazul_expires_in" readonly="True"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="contaazul_synchronize_all" string="Synch ALL DATA" type="object" class="btn-primary"/>
+                        <group>
+                            <group cols="2">
+                                <group>
+                                    <button name="contaazul_refresh_token" string="Refresh" type="object" class="btn-primary"/>
+                                    <button name="contaazul_unauthorise_action" string="Unauthorised" type="object" class="oe_highlights"/>
+                                </group>
+                            </group>
+                        </group>
+                    </footer>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
